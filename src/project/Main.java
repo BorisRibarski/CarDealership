@@ -1,3 +1,5 @@
+package project;
+
 import project.cars.Car;
 import project.cars.CarType;
 import project.companies.CarCompany;
