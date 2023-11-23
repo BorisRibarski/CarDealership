@@ -1,10 +1,10 @@
 package project.services;
 
 import project.cars.Car;
+import project.cars.engines.Engine;
 
-public class TuneService extends Service implements Tuning {
-    @Override
-    public void tune(Car car) {
-        car.tune(work_done);
+public class TuneService extends Service implements Tunable{
+    public void tune(Engine engine, int power, int torque){
+        engine.tune(power, torque);
     }
 }

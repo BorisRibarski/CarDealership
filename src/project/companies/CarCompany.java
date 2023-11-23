@@ -4,7 +4,6 @@ import project.cars.Car;
 import project.cars.CarType;
 import project.factories.BMWCarFactory;
 import project.factories.CarFactory;
-import project.services.CarService;
 
 public class CarCompany {
     private CarFactory factory;

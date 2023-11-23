@@ -1,53 +1,51 @@
 package project.cars.engines;
 
+import project.services.Tunable;
+
 public abstract class Engine {
     private final EngineType type;
-    private int horse_power;
-    private int torque;
     private final String producer;
-    protected static int max_hp;
-    protected static int max_torque;
-    protected static String name;
+    protected EngineSpecs specs;
+    protected static String code;
     private String model;
+    private double quality;
 
-    protected Engine(EngineType type, int horsePower, int torque,String producer, String model) {
+    protected Engine(EngineType type, String producer, String model) {
         this.type = type;
-        horse_power = horsePower;
-        this.torque = torque;
         this.producer = producer;
         setSpecs();
+        setCode();
         setModel(model);
+        quality = 100;
     }
-    protected abstract void setMax_hp();
-    protected abstract void setMax_torque();
-    protected abstract void setName();
+    protected abstract void setCode();
 
     protected void setModel(String model) {
         this.model = model;
     }
     public String getEngineSpecs(){
-        return name + model +
-                " and has " + horse_power + "hp" +
-                " and " + torque + "Nm" +
+        return code + model +
+                " with " + specs.print() +
                 " produced from " + producer;
     }
     public String getMaxOpportunities(){
-        return horse_power + "hp and " +
-                torque + "Nm";
+        return specs.getMaxPower() + "hp and " +
+                specs.getMaxTorque() + "Nm";
     }
-    protected void setSpecs(){
-        setMax_hp();
-        setMax_torque();
-        setName();
+    protected abstract void setSpecs();
+
+    public void tune(int morePower, int moreTorque) {
+        this.specs.tune(morePower, moreTorque);
     }
-    public void tune(int tune){
-        horse_power += tune;
-        torque += tune;
-        if(horse_power > max_hp){
-            horse_power = max_hp;
-        }
-        if(torque > max_torque){
-            torque = max_torque;
-        }
+
+    public void repair(){
+        quality = 100;
+    }
+    public void broke(){
+        quality = 30;
+    }
+
+    public double getQuality() {
+        return quality;
     }
 }
