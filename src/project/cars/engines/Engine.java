@@ -40,4 +40,14 @@ public abstract class Engine {
         setMax_torque();
         setName();
     }
+    public void tune(int tune){
+        horse_power += tune;
+        torque += tune;
+        if(horse_power > max_hp){
+            horse_power = max_hp;
+        }
+        if(torque > max_torque){
+            torque = max_torque;
+        }
+    }
 }
