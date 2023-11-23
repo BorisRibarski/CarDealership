@@ -6,7 +6,7 @@ public class m40 extends Engine {
     }
     @Override
     protected void setMax_hp() {
-        max_hp = 200;
+        max_hp = 220;
     }
 
     @Override
