@@ -15,7 +15,12 @@ public abstract class Car {
     }
     public String getSpecs(){
         return name + " " + model + " " + type +
-                " has an engine: " + engine.getEngineSpecs();
+                " has an engine:\n\t" + engine.getEngineSpecs();
+    }
+
+    public String getOpportunities(){
+        return name + " " + model + " " + type +
+                " and engine can has " + engine.getMaxOpportunities();
     }
 
     public void setEngine(Engine engine) {

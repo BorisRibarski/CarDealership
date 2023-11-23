@@ -2,7 +2,7 @@ package project.cars.engines;
 
 public class m54 extends Engine{
     public m54(int hp, int torque, String producer, String model){
-        super(EngineType.GASOLINE, hp, torque,producer, 200, 300, model);
+        super(EngineType.GASOLINE, hp, torque,producer, model);
     }
     @Override
     protected void setMax_hp() {
