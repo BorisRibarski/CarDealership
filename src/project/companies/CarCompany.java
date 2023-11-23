@@ -14,7 +14,6 @@ public class CarCompany {
         this.factory = switch (company){
             case BMW -> new BMWCarFactory();
             case VOLKSWAGEN -> null;
-            default -> null;
         };
     }
 

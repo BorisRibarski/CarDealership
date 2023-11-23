@@ -11,26 +11,12 @@ public abstract class Car {
     private Engine engine;
     private final CarType type;
     private final String model;
-    private int mileage;
-    private boolean broken;
     public Car(Engine engine, CarType type, String model) {
         setEngine(engine);
         this.type = type;
         this.model = model;
         setName();
-        mileage = 0;
-        broken = false;
     }
-    public String getSpecs(){
-        return name + " " + model + " " + type +
-                " has an engine:\n\t" + engine.getEngineSpecs();
-    }
-
-    public String getOpportunities(){
-        return name + " " + model + " " + type +
-                " and engine can has " + engine.getMaxOpportunities();
-    }
-
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
