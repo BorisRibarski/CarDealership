@@ -1,11 +1,21 @@
 package project.cars.engines;
 
 public class m40 extends Engine {
-    public m40(int maxHp, int maxTorque){
-        super(maxHp, maxTorque);
-
+    public m40(int hp, int torque, String producer, String model){
+        super(EngineType.GASOLINE, hp, torque,producer, 200, 300, model);
     }
-    protected m40(EngineType type, int horsePower, int torque, String producer, int maxHp, int maxTorque) {
-        super(type, horsePower, torque, producer, maxHp, maxTorque);
+    @Override
+    protected void setMax_hp() {
+        max_hp = 200;
+    }
+
+    @Override
+    protected void setMax_torque() {
+        max_torque = 300;
+    }
+
+    @Override
+    protected void setName() {
+        name = "m40";
     }
 }

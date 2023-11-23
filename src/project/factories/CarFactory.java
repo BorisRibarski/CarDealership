@@ -14,5 +14,5 @@ public abstract class CarFactory {
         return name;
     }
 
-    public abstract Car buildCar(String model, String engine_number, CarType type);
+    public abstract Car buildCar(String name, String model ,String engine_number, CarType type);
 }

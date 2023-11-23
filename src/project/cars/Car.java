@@ -3,15 +3,24 @@ package project.cars;
 import project.cars.engines.Engine;
 
 public abstract class Car {
+    protected static String name;
     private Engine engine;
-    private CarType type;
-    private String model;
+    private final CarType type;
+    private final String model;
     public Car(Engine engine, CarType type, String model) {
-        this.engine = engine;
+        setEngine(engine);
         this.type = type;
         this.model = model;
+        setName();
     }
-    public void print(){
-        System.out.printf("%s has %d horse power\n", this.model, this.engine.getHorse_power());
+    public String getSpecs(){
+        return name + " " + model + " " + type +
+                " has an engine: " + engine.getEngineSpecs();
     }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    protected abstract void setName();
 }

@@ -19,10 +19,10 @@ public class CarCompany {
         };
     }
 
-    public Car produceCar(String model, String engine_number, CarType type){
+    public Car produceCar(String name, String model, String engine_number, CarType type){
         if(factory == null){
             return null;
         }
-        return factory.buildCar(model, engine_number, type);
+        return factory.buildCar(name, model, engine_number, type);
     }
 }

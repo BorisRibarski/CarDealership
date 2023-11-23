@@ -12,9 +12,10 @@ public class BMWCarFactory extends CarFactory{
     }
 
     private final static EngineFactory engineFactory = new BMWEngineFactory();
-    public Car buildCar(String model, String engine_number, CarType type){
+    @Override
+    public Car buildCar(String name, String model, String engine_number, CarType type){
         Engine engine = engineFactory.buildEngine(engine_number);
-        return switch (model){
+        return switch (name){
             case "E46" -> new E46(engine, type, model);
             case "E36" -> new E36(engine, type, model);
             default -> null;
