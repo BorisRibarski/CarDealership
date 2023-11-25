@@ -1,17 +1,20 @@
 package project;
 
-import project.cars.Car;
-import project.cars.CarType;
-import project.companies.CarCompany;
-import project.companies.Companies;
-import project.services.RepairService;
+import project.cities.CitiesMap;
+import project.cities.City;
 
 public class Main {
     public static void main(String[] args) {
-        CarCompany company = new CarCompany();
-        company.setFactory(Companies.BMW);
-        Car car1 = company.produceCar("E36", "318", "m40b16", CarType.COUPE);
-        RepairService service = new RepairService();
-        car1.repair(service);
+        City sofia = new City("Sofia");
+        City plovdiv = new City("Plovdiv");
+        City burgas = new City("Burgas");
+        City tarnovo = new City("Tarnovo");
+        CitiesMap map = new CitiesMap();
+        map.addRoad(sofia, plovdiv, 130);
+        map.addRoad(sofia, tarnovo, 150);
+        map.addRoad(burgas, plovdiv, 300);
+        map.addRoad(burgas, sofia, 400);
+        map.addRoad(tarnovo, burgas, 100);
+        System.out.println(map.find(sofia, burgas));
     }
 }
