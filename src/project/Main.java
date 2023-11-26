@@ -5,22 +5,37 @@ import project.cities.City;
 
 public class Main {
     public static void main(String[] args) {
-        City sofia = new City("Sofia");
-        City plovdiv = new City("Plovdiv");
-        City burgas = new City("Burgas");
-        City tarnovo = new City("Tarnovo");
-        City pernik = new City("Pernik");
-        City haskovo = new City("Haskovo");
+        City a = new City("А");
+        City b = new City("B");
+        City c = new City("C");
+        City d = new City("D");
+        City e = new City("E");
+        City f = new City("F");
+        City g = new City("G");
+        City h = new City("H");
+        City j = new City("J");
+        City k = new City("K");
+        City l = new City("L");
+        City m = new City("M");
+
         CitiesMap map = new CitiesMap();
-        map.addRoad(sofia, plovdiv, 130);
-        map.addRoad(sofia, tarnovo, 150);
-        map.addRoad(burgas, sofia, 400);
-        map.addRoad(pernik, sofia, 50);
-        map.addRoad(pernik, plovdiv, 70);
-        map.addRoad(tarnovo, burgas, 100);
-        map.addRoad(tarnovo, plovdiv, 40);
-        map.addRoad(haskovo, plovdiv, 70);
-        map.addRoad(haskovo, burgas, 200);
-        System.out.println(map.findShortestRoad(sofia, burgas));
+        map.addRoad(a, b, 10);
+        map.addRoad(a, d, 10);
+        map.addRoad(a, l, 60);
+        map.addRoad(b, c, 90);
+        map.addRoad(b, m, 20);
+        map.addRoad(b, f, 30);
+        map.addRoad(b, c, 90);
+        map.addRoad(d, e, 30);
+        map.addRoad(e, j, 70);
+        map.addRoad(e, f, 80);
+        map.addRoad(f, k, 30);
+        map.addRoad(f, m, 40);
+        map.addRoad(f, j, 40);
+        map.addRoad(k, h, 50);
+        map.addRoad(j, l, 50);
+        map.addRoad(h, g, 20);
+        map.addRoad(a, b, 10);
+        System.out.println(map.findShortestRoad(d, h) + "=" + map.findShortestDistance(d, h));
     }
 }
