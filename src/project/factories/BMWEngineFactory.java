@@ -15,6 +15,7 @@ public class BMWEngineFactory extends EngineFactory{
             "m54b22", () -> new M54(producer, "b22"),
             "m54b25", () -> new M54(producer, "b25")
     );
+
     protected BMWEngineFactory() {
         super(producer);
     }

@@ -1,8 +1,6 @@
 package project.cars;
 
 import project.cars.engines.Engine;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -15,6 +13,7 @@ public class E46 extends Car {
     protected void setName() {
         name = "E46";
     }
+
     @Override
     protected void setPossibleTypes() {
         possibleTypes = Map.of(

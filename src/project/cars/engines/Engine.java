@@ -1,14 +1,12 @@
 package project.cars.engines;
 
-import project.services.Tunable;
-
 public abstract class Engine {
-    private final EngineType type;
-    private final String producer;
-    protected EngineSpecs specs;
     protected static String code;
+    protected EngineSpecs specs;
+    private final EngineType type;
     private String model;
     private double quality;
+    private final String producer;
 
     protected Engine(EngineType type, String producer, String model) {
         this.type = type;
@@ -18,21 +16,17 @@ public abstract class Engine {
         setModel(model);
         quality = 100;
     }
-    protected abstract void setCode();
 
-    protected void setModel(String model) {
-        this.model = model;
+    public String getMaxOpportunities(){
+        return specs.getMaxPower() + "hp and " +
+                specs.getMaxTorque() + "Nm";
     }
+
     public String getEngineSpecs(){
         return code + model +
                 " with " + specs.print() +
                 " produced from " + producer;
     }
-    public String getMaxOpportunities(){
-        return specs.getMaxPower() + "hp and " +
-                specs.getMaxTorque() + "Nm";
-    }
-    protected abstract void setSpecs();
 
     public void tune(int morePower, int moreTorque) {
         this.specs.tune(morePower, moreTorque);
@@ -41,11 +35,17 @@ public abstract class Engine {
     public void repair(){
         quality = 100;
     }
+
     public void broke(){
         quality = 30;
     }
 
     public double getQuality() {
         return quality;
+    }
+    protected abstract void setCode();
+    protected abstract void setSpecs();
+    protected void setModel(String model) {
+        this.model = model;
     }
 }

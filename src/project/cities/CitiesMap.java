@@ -13,9 +13,11 @@ public class CitiesMap {
         map.add(road);
         map.add(road.getOpposite());
     }
+
     public void addRoad(City start, City end, int distance){
         addRoad(new Road(start, end, distance));
     }
+
     public List<City> findShortestRoad(City start, City end){
         List<City> visitedCities = new ArrayList<>();
         List<City> shortestWay = new ArrayList<>();
@@ -29,9 +31,11 @@ public class CitiesMap {
         }
         return shortestWay;
     }
+
     public int findShortestDistance(City start, City end){
         return calculateDistance(findShortestRoad(start, end));
     }
+
     private List<List<City>> findAllWays(City start, City end, List<City> visitedCities, List<List<City>> ways){
         visitedCities.add(start);
         for(City city : getSurroundingCities(start)){
@@ -46,6 +50,7 @@ public class CitiesMap {
         }
         return ways;
     }
+
     private Road getRoad(City start, City end){
         for(Road road : map){
             if(road.getStart() == start && road.getEnd() == end){
@@ -54,21 +59,15 @@ public class CitiesMap {
         }
         return null;
     }
+
     private int calculateDistance(List<City> cities){
         int distance = 0;
         for (int i = 0;i < cities.size()-1;i++){
-            distance += getRoad(cities.get(i), cities.get(i+1)).getDistance();
+            distance += Objects.requireNonNull(getRoad(cities.get(i), cities.get(i + 1))).getDistance();
         }
         return distance;
     }
-    private Set<City> getAllCities(){
-        Set<City> cities = new HashSet<>();
-        for (Road road : map){
-            cities.add(road.getStart());
-            cities.add(road.getEnd());
-        }
-        return cities;
-    }
+
     private Set<City> getSurroundingCities(City city){
         Set<City> cities = new HashSet<>();
         for (Road road : map){

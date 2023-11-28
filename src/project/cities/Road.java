@@ -2,16 +2,7 @@ package project.cities;
 
 import java.util.Objects;
 
-public class Road {
-    private final City start;
-    private final City end;
-    private final int distance;
-
-    public Road(City start, City end, int distance) {
-        this.start = start;
-        this.end = end;
-        this.distance = distance;
-    }
+public record Road (City start, City end, int distance){
     public Road getOpposite(){
         return new Road(end, start, distance);
     }
@@ -32,17 +23,5 @@ public class Road {
     @Override
     public int hashCode() {
         return Objects.hash(start, end, distance);
-    }
-
-    public City getStart() {
-        return start;
-    }
-
-    public City getEnd() {
-        return end;
-    }
-
-    public int getDistance() {
-        return distance;
     }
 }

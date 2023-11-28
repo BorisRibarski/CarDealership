@@ -14,12 +14,15 @@ public class CarOwner {
         this.name = name;
         wallet = 0;
     }
+
     public void work(int days){
         wallet += 100 * days;
     }
+
     public void buyCar(String name, CarType type, String model, Dealership dealership){
         this.car = dealership.sellCar(name, type, model);
     }
+
     @Override
     public String toString() {
         return "Name = '" + name +'\'';

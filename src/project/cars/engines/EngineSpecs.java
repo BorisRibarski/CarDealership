@@ -1,10 +1,11 @@
 package project.cars.engines;
 
 public class EngineSpecs {
-    private int power;
-    private int torque;
     private final int maxPower;
     private final int maxTorque;
+    private int power;
+    private int torque;
+
     EngineSpecs(int power, int torque, int maxPower, int maxTorque){
         this.power = power;
         this.torque = torque;
@@ -37,6 +38,7 @@ public class EngineSpecs {
     public int getMaxTorque() {
         return maxTorque;
     }
+
     public String print(){
         return getPower() + "hp" +
                 " and " + getTorque() + "Nm";
