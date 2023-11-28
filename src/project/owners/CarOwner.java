@@ -2,7 +2,6 @@ package project.owners;
 
 import project.cars.Car;
 import project.cars.CarType;
-import project.companies.CarCompany;
 import project.dealerships.Dealership;
 
 public class CarOwner {

@@ -53,7 +53,7 @@ public class CitiesMap {
 
     private Road getRoad(City start, City end){
         for(Road road : map){
-            if(road.getStart() == start && road.getEnd() == end){
+            if(road.start() == start && road.end() == end){
                 return road;
             }
         }
@@ -63,7 +63,7 @@ public class CitiesMap {
     private int calculateDistance(List<City> cities){
         int distance = 0;
         for (int i = 0;i < cities.size()-1;i++){
-            distance += Objects.requireNonNull(getRoad(cities.get(i), cities.get(i + 1))).getDistance();
+            distance += Objects.requireNonNull(getRoad(cities.get(i), cities.get(i + 1))).distance();
         }
         return distance;
     }
@@ -71,8 +71,8 @@ public class CitiesMap {
     private Set<City> getSurroundingCities(City city){
         Set<City> cities = new HashSet<>();
         for (Road road : map){
-            if(road.getStart() == city){
-                cities.add(road.getEnd());
+            if(road.start() == city){
+                cities.add(road.end());
             }
         }
         return cities;

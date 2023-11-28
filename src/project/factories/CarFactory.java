@@ -5,7 +5,7 @@ import project.cars.CarType;
 
 public abstract class CarFactory {
     private final String name;
-    protected EngineFactory engineFactory;
+    protected final EngineFactory engineFactory;
 
     protected CarFactory(String name, EngineFactory engineFactory) {
         this.name = name;
