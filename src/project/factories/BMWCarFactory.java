@@ -8,10 +8,8 @@ import project.cars.engines.Engine;
 
 public class BMWCarFactory extends CarFactory{
     public BMWCarFactory() {
-        super("BMW Group");
+        super("BMW Group",  new BMWEngineFactory());
     }
-
-    private final static EngineFactory engineFactory = new BMWEngineFactory();
     @Override
     public Car buildCar(String name, String model, String engine_number, CarType type){
         Engine engine = engineFactory.buildEngine(engine_number);

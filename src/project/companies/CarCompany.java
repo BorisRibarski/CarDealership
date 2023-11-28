@@ -5,12 +5,16 @@ import project.cars.CarType;
 import project.factories.BMWCarFactory;
 import project.factories.CarFactory;
 
+import java.util.List;
+
 public class CarCompany {
     private CarFactory factory;
 
-    public CarCompany() {}
+    public CarCompany(Companies company) {
+        setFactory(company);
+    }
 
-    public void setFactory(Companies company) {
+    private void setFactory(Companies company) {
         this.factory = switch (company){
             case BMW -> new BMWCarFactory();
             case VOLKSWAGEN -> null;

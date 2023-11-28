@@ -3,9 +3,9 @@ package project.cities;
 import java.util.Objects;
 
 public class Road {
-    private City start;
-    private City end;
-    private int distance;
+    private final City start;
+    private final City end;
+    private final int distance;
 
     public Road(City start, City end, int distance) {
         this.start = start;
