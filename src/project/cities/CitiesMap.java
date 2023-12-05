@@ -17,14 +17,17 @@ public class CitiesMap {
     }
 
     public String findNearestService(City currentCity, Class<?> type){
-        List<City> citiesWithService = new ArrayList<>();
+        if(currentCity.doHaveServiceType(type)){
+            return currentCity.toString();
+        }
+        Set<City> citiesWithService = new HashSet<>();
         for(City city : allCities()){
             if(city.doHaveServiceType(type)){
                 citiesWithService.add(city);
             }
         }
         int distance = 0;
-        City targetCity = citiesWithService.get(0);
+        City targetCity = null;
         for(City city : citiesWithService){
             int currentDistance = findShortestDistance(currentCity, city);
             if(distance > currentDistance || distance == 0){
@@ -32,7 +35,7 @@ public class CitiesMap {
                 targetCity = city;
             }
         }
-        return targetCity.toString();
+        return Objects.requireNonNull(targetCity).toString();
     }
 
     public void addRoad(Road road){
@@ -85,10 +88,10 @@ public class CitiesMap {
             if(city == end){
                 visitedCities.add(end);
                 ways.add(visitedCities);
-                if(ways.size() == 1){
-                    visitedCities.remove(end);
-                    continue;
-                }
+//                if(ways.size() == 1 && visitedCities.size() == 2){
+//                    visitedCities.remove(end);
+//                    break;
+//                }
                 break;
             }
             if(!visitedCities.contains(city)){
@@ -108,7 +111,7 @@ public class CitiesMap {
     }
 
     private int calculateDistance(List<City> cities){
-        if(cities.size() == 2 && cities.get(0) == cities.get(1)) return 0;
+        if(cities.get(0) == cities.get(1)) return 0;
         int distance = 0;
         for (int i = 0;i < cities.size()-1;i++){
             distance += Objects.requireNonNull(getRoad(cities.get(i), cities.get(i + 1))).getDistance();
