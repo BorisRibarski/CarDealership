@@ -2,7 +2,7 @@ package project.companies;
 
 import project.cars.Car;
 import project.cars.CarType;
-import project.factories.BMWCarFactory;
+import project.BMW.bmwFactories.BMWCarFactory;
 import project.factories.CarFactory;
 
 public class CarCompany {
@@ -16,7 +16,7 @@ public class CarCompany {
         if(factory == null){
             return null;
         }
-        return factory.buildCar(name, model, engine_number, type);
+        return factory.buildCar(name, model, type);
     }
 
     private void setFactory(Companies company) {

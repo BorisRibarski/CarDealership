@@ -6,7 +6,7 @@ public class EngineSpecs {
     private int power;
     private int torque;
 
-    EngineSpecs(int power, int torque, int maxPower, int maxTorque){
+    public EngineSpecs(int power, int torque, int maxPower, int maxTorque){
         this.power = power;
         this.torque = torque;
         this.maxPower = maxPower;
@@ -39,7 +39,8 @@ public class EngineSpecs {
         return maxTorque;
     }
 
-    public String print(){
+    @Override
+    public String toString(){
         return getPower() + "hp" +
                 " and " + getTorque() + "Nm";
     }

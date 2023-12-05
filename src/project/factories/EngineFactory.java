@@ -12,5 +12,5 @@ public abstract class EngineFactory {
         return name;
     }
 
-    public abstract Engine buildEngine(String engine_number);
+    public abstract Engine buildEngine(String car, String engine_number);
 }
