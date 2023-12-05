@@ -3,7 +3,10 @@ package project.owners;
 import project.cars.Car;
 import project.cars.CarType;
 import project.cities.CitiesMap;
+import project.cities.City;
 import project.dealerships.Dealership;
+import project.services.Repairable;
+import project.services.Tunable;
 
 public class CarOwner {
     private CitiesMap map;
@@ -43,6 +46,18 @@ public class CarOwner {
             this.currentCity = city;
             this.car.drive(distance, brokeCoef);
         }
+    }
+
+    public String findNearestTuneService(){
+        return map.findNearestService(this.currentCity, Tunable.class);
+    }
+
+    public String findNearestRepairService(){
+        return map.findNearestService(this.currentCity, Repairable.class);
+    }
+
+    public int findDistance(String city){
+        return map.findShortestDistance(currentCity, city);
     }
 
     @Override

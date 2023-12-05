@@ -35,7 +35,7 @@ public class City {
         return name;
     }
 
-    private boolean doHaveServiceType(Class<?> type){
+    public boolean doHaveServiceType(Class<?> type){
         return serviceTypes().contains(type);
     }
 

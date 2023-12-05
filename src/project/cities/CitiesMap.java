@@ -1,5 +1,8 @@
 package project.cities;
 
+import project.services.Repairable;
+import project.services.Tunable;
+
 import java.util.*;
 
 public class CitiesMap {
@@ -7,6 +10,29 @@ public class CitiesMap {
 
     public CitiesMap() {
         this.map = new HashSet<>();
+    }
+
+    public String findNearestService(String city, Class<?> type){
+        return findNearestService(findCity(city), type);
+    }
+
+    public String findNearestService(City currentCity, Class<?> type){
+        List<City> citiesWithService = new ArrayList<>();
+        for(City city : allCities()){
+            if(city.doHaveServiceType(type)){
+                citiesWithService.add(city);
+            }
+        }
+        int distance = 0;
+        City targetCity = citiesWithService.get(0);
+        for(City city : citiesWithService){
+            int currentDistance = findShortestDistance(currentCity, city);
+            if(distance > currentDistance || distance == 0){
+                distance = currentDistance;
+                targetCity = city;
+            }
+        }
+        return targetCity.toString();
     }
 
     public void addRoad(Road road){
@@ -31,6 +57,7 @@ public class CitiesMap {
     }
 
     public List<City> findShortestRoad(City start, City end){
+        if(start == end) return Arrays.asList(start, end);
         List<City> visitedCities = new ArrayList<>();
         List<City> shortestWay = new ArrayList<>();
         List<List<City>> ways = findAllWays(start, end, visitedCities, new ArrayList<>());
@@ -81,6 +108,7 @@ public class CitiesMap {
     }
 
     private int calculateDistance(List<City> cities){
+        if(cities.size() == 2 && cities.get(0) == cities.get(1)) return 0;
         int distance = 0;
         for (int i = 0;i < cities.size()-1;i++){
             distance += Objects.requireNonNull(getRoad(cities.get(i), cities.get(i + 1))).getDistance();
@@ -107,5 +135,14 @@ public class CitiesMap {
             }
         }
         return null;
+    }
+
+    private Set<City> allCities(){
+        Set<City> cities = new HashSet<>();
+        for (Road road : map){
+            cities.add(road.getStart());
+            cities.add(road.getEnd());
+        }
+        return cities;
     }
 }
